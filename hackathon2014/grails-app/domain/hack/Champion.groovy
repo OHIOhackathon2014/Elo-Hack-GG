@@ -4,7 +4,7 @@ class Champion {
 
 	Integer champid
 	
-	String title
+	String name
 	
 	static hasMany = [stats: Stat]
 	

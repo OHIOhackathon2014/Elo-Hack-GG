@@ -9,5 +9,7 @@ class Stat {
     static constraints = {
     }
 	
+	
+	// Champions have stats
 	static belongsTo = [champion: Champion]
 }

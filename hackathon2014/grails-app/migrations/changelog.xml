@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
+
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+
+        http://www.liquibase.org/xml/ns/dbchangelog-ext 
+
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<!--Template -->
+	<changeSet id="1" author="Paul">
+		<createTable tableName="test">
+
+			<column name="id" type="int">
+
+				<constraints primaryKey="true" nullable="false" />
+
+			</column>
+
+			<column name="version" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+			<column name="name" type="varchar(250)">
+
+				<constraints nullable="false" />
+
+			</column>
+
+		</createTable>
+	</changeSet>
+
+	<changeSet id="2" author="Paul">
+		<createTable tableName="champion">
+
+			<column name="id" type="int">
+
+				<constraints primaryKey="true" nullable="false" />
+
+			</column>
+
+			<column name="version" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+			<column name="championID" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+			<column name="name" type="varchar(250)">
+
+				<constraints nullable="false" />
+
+			</column>
+
+		</createTable>
+
+		<createTable tableName="stat">
+
+			<column name="id" type="int">
+
+				<constraints primaryKey="true" nullable="false" />
+
+			</column>
+
+			<column name="version" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+			<column name="attackrange" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+			<column name="mpperlevel" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+			<column name="champion_id" type="int">
+
+				<constraints nullable="false" />
+
+			</column>
+
+		</createTable>
+	</changeSet>
+	
+	<!-- Camel case translation champId -> champ_id -->
+	<changeSet id="3" author="Paul">
+	<renameColumn tableName="champion" oldColumnName="championID" newColumnName="champid" columnDataType="int"/>
+	
+	</changeSet>
+
+	<!-- dropTable to remove table -->
+</databaseChangeLog>
