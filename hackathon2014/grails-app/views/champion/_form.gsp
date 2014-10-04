@@ -11,21 +11,30 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: championInstance, field: 'name', 'error')} required">
+	<label for="name">
+		<g:message code="champion.name.label" default="Name" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="name" required="" value="${championInstance?.name}"/>
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: championInstance, field: 'stats', 'error')} ">
 	<label for="stats">
 		<g:message code="champion.stats.label" default="Stats" />
 		
 	</label>
-	<g:select name="stats" from="${hack.Stat.list()}" multiple="multiple" optionKey="id" size="5" value="${championInstance?.stats*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${championInstance?.stats?}" var="s">
+    <li><g:link controller="stat" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="stat" action="create" params="['champion.id': championInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'stat.label', default: 'Stat')])}</g:link>
+</li>
+</ul>
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: championInstance, field: 'title', 'error')} required">
-	<label for="title">
-		<g:message code="champion.title.label" default="Title" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:textField name="title" required="" value="${championInstance?.title}"/>
 
 </div>
 

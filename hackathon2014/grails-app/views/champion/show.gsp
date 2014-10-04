@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${championInstance?.name}">
+				<li class="fieldcontain">
+					<span id="name-label" class="property-label"><g:message code="champion.name.label" default="Name" /></span>
+					
+						<span class="property-value" aria-labelledby="name-label"><g:fieldValue bean="${championInstance}" field="name"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${championInstance?.stats}">
 				<li class="fieldcontain">
 					<span id="stats-label" class="property-label"><g:message code="champion.stats.label" default="Stats" /></span>
@@ -39,15 +48,6 @@
 						<g:each in="${championInstance.stats}" var="s">
 						<span class="property-value" aria-labelledby="stats-label"><g:link controller="stat" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${championInstance?.title}">
-				<li class="fieldcontain">
-					<span id="title-label" class="property-label"><g:message code="champion.title.label" default="Title" /></span>
-					
-						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${championInstance}" field="title"/></span>
 					
 				</li>
 				</g:if>
