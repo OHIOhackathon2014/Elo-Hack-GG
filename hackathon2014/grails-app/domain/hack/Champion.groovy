@@ -8,6 +8,9 @@ class Champion {
 	
 	static hasMany = [stats: Stat]
 	
+	static mapping = {
+		id generator: 'increment'	
+	}
 	
     static constraints = {
     }

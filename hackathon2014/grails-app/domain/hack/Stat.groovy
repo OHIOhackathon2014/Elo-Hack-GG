@@ -8,4 +8,6 @@ class Stat {
 
     static constraints = {
     }
+	
+	static belongsTo = [champion: Champion]
 }
